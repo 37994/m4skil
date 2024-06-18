@@ -24,14 +24,22 @@ body{
     background: linear-gradient(to right, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     gap: 5rem;
     flex-wrap: wrap;
+    padding: 1rem;
 }
 
 .profile{
-    width: 40rem;
-    height: 40rem;
+    width: 20rem;
+    height: 20rem;
     border-radius: 5rem;
     background: white;
     box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.2);
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .profile__header{
@@ -42,19 +50,19 @@ body{
 }
 
 .profile:nth-of-type(1) .profile__header{
-    background: url("/images/background1.webp");
+    background: url("../images/background1.webp");
     background-size: 100% 100%;
     background-size: cover;
 }
 
 .profile:nth-of-type(2) .profile__header{
-    background: url("/images/background2.webp");
+    background: url("../images/background2.webp");
     background-size: 100% 100%;
     background-size: cover;
 }
 
 .profile:nth-of-type(3) .profile__header{
-    background: url("/images/background3.webp");
+    background: url("../images/background3.webp");
     background-size: 100% 100%;
     background-size: cover;
 }
@@ -110,6 +118,10 @@ body{
 .profile__text{
     margin-top: 1rem;
     font-size: 80%;
+    opacity: 0;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
 }
 
 .profile__footer{
@@ -127,6 +139,10 @@ body{
     border: none;
     position: relative;
     transform: rotate(45deg);
+    opacity: 0;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
 
     &:hover{
         cursor: pointer;
@@ -154,5 +170,55 @@ body{
 }
 
 @media screen and (max-width: 50rem) {
+    .profile{
+        width: 40rem;
+        height: 40rem;
+    }
+
+    .profile, .profile__text, .heart{
+        opacity: 1;
+        animation-name: "";
+        animation-duration: 0;
+    }
+}
+
+@keyframes expand {
+    0% {
+        width: 20rem;
+        height: 20rem;
+    }
     
+    50% {
+        width: 20rem;
+        height: 40rem;
+    }
+    
+    100% {
+        width: 40rem;
+        height: 40rem;
+    }
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popupHeart {
+    from {
+        opacity: 0;
+        transform: translateY(2rem) rotate(45deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(45deg);
+    }
 }
